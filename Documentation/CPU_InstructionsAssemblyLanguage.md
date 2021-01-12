@@ -62,6 +62,7 @@ Instructions (* = not yet implemented):
 
 Conditions (for Bcc and DBcc):
 Condition | Description | Test on CCR
+--------- | ----------- | -----------
 RA | always | true
 F | never | false
 EQ | equal | Z=1
