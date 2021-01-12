@@ -1,16 +1,16 @@
 # ARK-Computer
 
 ## User documentation
-* (Documentation/ComputerUseInstructions.md)
-* (Documentation/FloppyDisks.md)
-* (Documentation/OperatingTheScanner.md)
-* (Documentation/Command-ls.md)
+* [Computer use instructions](Documentation/ComputerUseInstructions.md)
+* [Floppy disks](Documentation/FloppyDisks.md)
+* [Operating the scanner](Documentation/OperatingTheScanner.md)
+* [Command: ls](Documentation/Command-ls.md)
 
 ## Programmers documentation
-* (Documentation/CompilingAndLinkingPrograms.md)
-* (Documentation/CPU_InstructionsAssemblyLanguage.md)
-* (Documentation/SystemCalls.md)
+* [Compiling and linking programs](Documentation/CompilingAndLinkingPrograms.md)
+* [CPU instructions/assembly language](Documentation/CPU_InstructionsAssemblyLanguage.md)
+* [System calls](Documentation/SystemCalls.md)
 ### Examples
-* (Examples/HelloWorld.md)
-* (Examples/SetDeviceState.s)
-* (Examples/InfinitelyToggleDeviceState.s)
+* [Hello world](Examples/HelloWorld.md)
+* [SetDeviceState.s](Examples/SetDeviceState.s)
+* [InfinitelyToggleDeviceState.s](Examples/InfinitelyToggleDeviceState.s)
