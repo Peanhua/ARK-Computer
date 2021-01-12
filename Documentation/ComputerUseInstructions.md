@@ -37,4 +37,4 @@ Built-in commands:
 
 If you have a scanner, place it near the computer, and the computer will automatically discover it when it starts up. If you place the scanner after the computer is already running, you need to restart the computer.
 
-The computers root filesystem is located in RAM, so every file stored in the root filesystem will be lost when you turn off the computer (or the game is restarted). Use the floppy disks for permanent storage. Do note that the binary format of executables will change in future, so make sure to also save your source files.
+The computers root filesystem is located in RAM, so every file stored in the root filesystem will be lost when you turn off the computer (or the game is restarted). Use the floppy disks for permanent storage, but make sure to read the https://github.com/Peanhua/ARK-Computer/blob/main/Documentation/FloppyDisks.md. Do note that the binary format of executables will change in future, so make sure to also save your source files.
