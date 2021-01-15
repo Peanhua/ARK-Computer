@@ -14,3 +14,6 @@
 * [Hello world](Examples/HelloWorld.md)
 * [SetDeviceState.s](Examples/SetDeviceState.s)
 * [InfinitelyToggleDeviceState.s](Examples/InfinitelyToggleDeviceState.s)
+* [PrintClock.s](Examples/PrintClock.s)
+* [WaitForMotion.s](Examples/WaitForMotion.s)
+

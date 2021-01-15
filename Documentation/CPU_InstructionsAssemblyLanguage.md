@@ -24,11 +24,11 @@ Addressing modes:
 * #n - Immediate, the value is n. Not applicable for destination operator.
 
 
-If instruction takes two operands, they are named source and destination. For one operand instructions, the operand is named destination.
+If instruction takes two operands, they are named source "<src>" and destination "<dst>". For one operand instructions, the operand is named destination.
 
 The source operand postincrement and predecrement operations are performed before destination operand postincrement and predecrement operations.
 
-Instructions operating on values take a size modifier:
+Some instructions operating take a size modifier, marked in syntax as ".s" (for example AND.s). The size modifier can be one of the following:
 * .b - 8 bits, not yet implemented
 * .w - 16 bits, not yet implemented
 * .l - 32 bits
@@ -36,28 +36,28 @@ Instructions operating on values take a size modifier:
 The assembler expects everything in lower case (will be fixed later to be case insensitive).
 
 Instructions (* = not yet implemented):
-* *ADD
-* *AND
+* ADD
+* AND
 * Bcc (BRA, BNE, BEQ, BPL, BMI, *BGE, *BLT, *BGT, *BLE)
-* *CLR
-* *CMP
+* CLR
+* CMP
 * *DBcc (DBF, DBNE, DBEQ, DBPL, DBMI, DBGE, DBLT, DBGT, DBLE)
-* *DIV
+* DIV
 * *EXG
 * JMP
 * JSR
-* *LEA
+* LEA
 * MOVE
-* *MUL
-* *NEG
+* MUL
+* NEG
 * NOP
-* *NOT
-* *OR
+* NOT
+* OR
 * RTS
-* *SUB
+* SUB
 * SYS
-* *TST
-* *XOR
+* TST
+* XOR
 
 
 Conditions (for Bcc and DBcc):
@@ -75,31 +75,44 @@ Instruction details:
 ```
 ADD - Add
 Operation: Source + Destination -> Destination
-Syntax: ADD <ea>, <ea>
+Syntax: ADD.s <src>, <dst>
+CCR: N=true if the result value was negative, false otherwise
+     Z=true if the result value was zero, false otherwise
 ```
 
 ```
 AND - Logical And
 Operation: Source & Destination -> Destination
-Syntax: AND <ea>, <ea>
+Syntax: AND.s <src>, <dst>
+CCR: N=true if the result value was negative, false otherwise
+     Z=true if the result value was zero, false otherwise
 ```
 
 ```
 Bcc - Branch Conditionally
 Operation: If Condition is true, then PC + offset -> PC
-Syntax: Bcc <label>
+Syntax: Bcc <address>
+Conditions: BRA=always
+            BNE=Z is false
+            BEQ=Z is true
+            BPL=N is false
+            BMI=N is true
 ```
 
 ```
 CLR - Clear
 Operation: 0 -> Destination
-Syntax: CLR <ea>
+Syntax: CLR.s <dst>
+CCR: N=false
+     Z=true
 ```
 
 ```
 CMP - Compare
 Operation: Destination - Source -> cc
-Syntax: CMP <ea>, Rn
+Syntax: CMP.s <src>, <dst>
+CCR: N=true if the result value was negative, false otherwise
+     Z=true if the result value was zero, false otherwise
 ```
 
 ```
@@ -108,13 +121,16 @@ Operation: If Condition is false, then
               Rn - 1 -> Rn
               If Rn != -1, then
                  PC + offset -> PC
-Syntax: DBcc Rn, <label>
+Syntax: DBcc Rn, <address>
 ```
 
 ```
 DIV - Divide
 Operation: Destination / Source -> Destination
-Syntax: DIV <ea>, <ea>
+Syntax: DIV.s <src>, <dst>
+CCR: N=true if the result value was negative, false otherwise
+     Z=true if the result value was zero, false otherwise
+If the source value is zero, the process is halted with illegal instruction error.
 ```
 
 ```
@@ -126,7 +142,7 @@ Syntax: EXG Rn, Rn
 ```
 JMP - Jump
 Operation: Destination Address -> PC
-Syntax: JMP <ea>
+Syntax: JMP <address>
 ```
 
 ```
@@ -134,19 +150,19 @@ JSR - Jump to Subroutine
 Operation: SP - 4 -> SP
            PC -> (SP)
            Destination Address -> PC
-Syntax: JSR <ea>
+Syntax: JSR <address>
 ```
 
 ```
 LEA - Load Effective Address
 Operation: ea -> Rn
-Syntax: LEA <ea>, Rn
+Syntax: LEA <src>, <dst>
 ```
 
 ```
 MOVE - Move Data
 Operation: Source -> Destination
-Syntax: MOVE <ea>, <ea>
+Syntax: MOVE.s <src>, <dst>
 CCR: N=true if the moved value was negative, false otherwise
      Z=true if the moved value was zero, false otherwise
 ```
@@ -154,13 +170,17 @@ CCR: N=true if the moved value was negative, false otherwise
 ```
 MUL - Multiply
 Operation: Source * Destination -> Destination
-Syntax: MUL <ea>, <ea>
+Syntax: MUL.s <src>, <dst>
+CCR: N=true if the result value was negative, false otherwise
+     Z=true if the result value was zero, false otherwise
 ```
 
 ```
 NEG - Negate
 Operation: 0 - Destination -> Destination
-Syntax: NEG <ea>
+Syntax: NEG.s <dst>
+CCR: N=true if the result value was negative, false otherwise
+     Z=true if the result value was zero, false otherwise
 ```
 
 ```
@@ -172,13 +192,17 @@ Syntax: NOP
 ```
 NOT - Complement
 Operation: ~Destination -> Destination
-Syntax: NOT <ea>
+Syntax: NOT.s <dst>
+CCR: N=true if the result value was negative, false otherwise
+     Z=true if the result value was zero, false otherwise
 ```
 
 ```
 OR - Inclusive Or
 Operation: Source | Destination -> Destination
-Syntax: OR <ea>, <ea>
+Syntax: OR.s <src>, <dst>
+CCR: N=true if the result value was negative, false otherwise
+     Z=true if the result value was zero, false otherwise
 ```
 
 ```
@@ -191,7 +215,9 @@ Syntax: RTS
 ```
 SUB - Subtract
 Operation: Destination - Source -> Destination
-Syntax: SUB <ea>, <ea>
+Syntax: SUB.s <src>, <dst>
+CCR: N=true if the result value was negative, false otherwise
+     Z=true if the result value was zero, false otherwise
 ```
 
 ```
@@ -202,11 +228,15 @@ Syntax: SYS
 ```
 TST - Test
 Operation: Destination Tested -> Condition codes
-Syntax: TST <ea>
+Syntax: TST.s <dst>
+CCR: N=true if the result value was negative, false otherwise
+     Z=true if the result value was zero, false otherwise
 ```
 
 ```
 XOR - Exclusive Or
 Operation: Source XOR Destination -> Destination
-Syntax: XOR Rn, <ea>
+Syntax: XOR.s Rn, <ea>
+CCR: N=true if the result value was negative, false otherwise
+     Z=true if the result value was zero, false otherwise
 ```

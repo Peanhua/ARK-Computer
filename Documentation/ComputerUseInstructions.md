@@ -22,7 +22,7 @@ After the computer is setup, turn it on. If you change parts when the computer i
 Now you can access the computers console, which is currently a command line interface.
 Built-in commands:
 * as - assembler, generates object file from assembly source code
-* cat - prints a text file on screen
+* cat - print a text file on screen
 * cd - change current working directory
 * df - print filesystem disk space usage
 * dmesg - print the system log on screen
@@ -30,11 +30,13 @@ Built-in commands:
 * edit - edit a text file (opens a new window for editing)
 * ld - linker, links object file to an executable file
 * mkdir - create a new directory
-* objdump - prints the contents of binary files (object and executable)
-* od - prints the contents of files as bytes
+* objdump - print the contents of binary files (object and executable)
+* od - print the contents of files as bytes
+* ps - print running processes
 * pwd - print the current working directory
-* scan - scans a document using a scanner and saves it to a file
+* scan - scan a document using a scanner and saves it to a file
+* sync - force all filesystems to be synchronized to disks
 
-If you have a scanner, place it near the computer, and the computer will automatically discover it when it starts up. If you place the scanner after the computer is already running, you need to restart the computer.
+If you have a external peripherals (scanner and/or motion detector), place it near the computer, and the computer will automatically discover it when it starts up. If you place the scanner after the computer is already running, you need to restart the computer.
 
-The computers root filesystem is located in RAM, so every file stored in the root filesystem will be lost when you turn off the computer (or the game is restarted). Use the floppy disks for permanent storage, but make sure to read the https://github.com/Peanhua/ARK-Computer/blob/main/Documentation/FloppyDisks.md. Do note that the binary format of executables will change in future, so make sure to also save your source files.
+The computers root filesystem is located in RAM, so every file stored in the root filesystem will be lost when you turn off the computer (or the game is restarted). Use the [floppy disks](FloppyDisks.md) for permanent storage. Do note that the binary format of executables will change in future, so make sure to also save your source files.
