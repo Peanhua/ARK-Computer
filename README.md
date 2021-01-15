@@ -16,4 +16,4 @@
 * [InfinitelyToggleDeviceState.s](Examples/InfinitelyToggleDeviceState.s)
 * [PrintClock.s](Examples/PrintClock.s)
 * [WaitForMotion.s](Examples/WaitForMotion.s)
-
+* [MotionDetector.s](Examples/MotionDetector.s)
