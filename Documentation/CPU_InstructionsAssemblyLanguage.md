@@ -1,4 +1,65 @@
-Note that these are the plans, only parts are implemented, there may/will be more, and some features depend on how you setup your computer (for example, the amount of memory).
+# Assembly language
+
+The "as" assembler command reads in a text file containing lines of instructions and other mnemonics.
+
+Each line can contain a label or mnemonic. Empty lines are ignored. Optional comments can be appended to any lines.
+
+
+## Comments
+
+Comments can be on their own lines, or appended after any other line. Anything after the comment start character ";" is ignored. For example:
+```
+; This is a comment.
+.label: ; This is also a comment, the .label: in the beginning of the line is not ignored.
+jmp .label ; And this also is a comment, anything up to the first ; is not ignored.
+```
+
+
+## Labels
+
+A label defines a name for the address of current line. The label is written as:
+```
+.label:
+```
+Where the "label" is the name of the label, and the "." and ":" tells the assembler that it indeed is a label. When referencing the label, the ":" is left out, for example:
+```
+jmp .label
+```
+
+
+## Data constants
+
+Data constants are constant values added to the generated binary file. The syntax is:
+```
+dc.s value1, value2, value3, ...
+```
+Where the "dc" stands for "data constant", and "s" defines the size of each value. The size is either "b" for byte (8 bit value, 1 byte), "w" for word (16 bit value, 2 bytes), or "l" for long (32 bit value, 4 bytes).
+
+The values are delimited by a ",", and are made of numbers and valid ASCII strings. ASCII strings are enclosed within " or '.
+
+Examples:
+```
+dc.b 1, 2, 3, 4
+dc.w 1, 2, 3, 4
+dc.l 1, 2, 3, 4
+dc.b "Hello world", 10, 0
+dc.l "Hello world", 10, 0
+```
+
+
+## Data segments
+
+Data segments reserve space and initialize it to zeros, the syntax is:
+```
+ds.s count
+```
+Where "ds" stands for "data segment". The "count" parameter defines the number of elements of the specified size to reserve.
+
+
+
+## Instructions
+
+Note that only parts are currently implemented, there may/will be more, and some features depend on how you setup your computer (for example, the amount of memory).
 
 Memory layout:
 * 24 bits address of memory = 16 megabytes
