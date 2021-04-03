@@ -18,3 +18,4 @@
 * [WaitForMotion.s](Examples/WaitForMotion.s)
 * [MotionDetector.s](Examples/MotionDetector.s)
 * [DotMatrixDisplay.s](Examples/DotMatrixDisplay.s)
+* [DeathInventoryKeeper.s](Examples/DeathInventoryKeeper.s)

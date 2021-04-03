@@ -3,7 +3,7 @@
 The SYS instruction takes the system call in r0, and additional parameters in r1, r2, ..
 
 * #0 - print the current process to stdout
-* #1 - print a string in pointed by r1 to stdout
+* #1 - print a string pointed by r1 to stdout
 * #2 - convert integer from r1 to string and place it in address pointed by r2
 * #3 - convert string from address pointed by r1 to integer, and return it in r0
 * #4 - open file with filename (string) from address pointed by r1, flags in r2 (bit#0 = create if the file doesn't exist), returns file handle in r0, negative value means error
