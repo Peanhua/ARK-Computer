@@ -89,9 +89,9 @@ If instruction takes two operands, they are named source "<src>" and destination
 
 The source operand postincrement and predecrement operations are performed before destination operand postincrement and predecrement operations.
 
-Some instructions operating take a size modifier, marked in syntax as ".s" (for example AND.s). The size modifier can be one of the following:
-* .b - 8 bits, not yet implemented
-* .w - 16 bits, not yet implemented
+Some instructions operating take a size modifier, marked in syntax as ".s" (for example "AND.s"). The size modifier can be one of the following:
+* .b - 8 bits
+* .w - 16 bits
 * .l - 32 bits
 
 The assembler expects everything in lower case (will be fixed later to be case insensitive).
@@ -108,6 +108,8 @@ Instructions (* = not yet implemented):
 * JMP
 * JSR
 * LEA
+* LSL
+* LSR
 * MOVE
 * MUL
 * NEG
@@ -218,6 +220,22 @@ Syntax: JSR <address>
 LEA - Load Effective Address
 Operation: ea -> Rn
 Syntax: LEA <src>, <dst>
+```
+
+```
+LSL - Logical Shift Left
+Operation: Destination shifted by Source -> Destination
+Syntax: LSL.s <src>, <dst>
+CCR: N=true if the result value was negative, false otherwise
+     Z=true if the result value was zero, false otherwise
+```
+
+```
+LSR - Logical Shift Right
+Operation: Destination shifted by Source -> Destination
+Syntax: LSR.s <src>, <dst>
+CCR: N=true if the result value was negative, false otherwise
+     Z=true if the result value was zero, false otherwise
 ```
 
 ```

@@ -14,6 +14,7 @@ The SYS instruction takes the system call in r0, and additional parameters in r1
 * #8 - read the realtime clock and return the seconds in r0, and fractions in r1, resolution is 1/1000 seconds, this is game time and not real life seconds
 * #9 - read file, r1 = file handle, r2 = pointer to memory buffer, r3 = number of bytes to read, returns the number of bytes read in r0, zero bytes read = eof
 * #10 - write file, r1 = file handle, r2 = pointer to memory buffer, r3 = number of bytes to write, returns 0 upon success in r0
+* #11 - seek file, r1 = file handle, r2 = whence (0=set, 1=current, 2=end), r3=offset, returns 0 upon success in r0
 
 
 ## IO Control Operations

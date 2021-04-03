@@ -28,6 +28,7 @@ Built-in commands:
 * dmesg - print the system log on screen
 * free - print memory information (total, used, free)
 * edit - edit a text file (opens a new window for editing)
+* id - print user id and privilege information
 * ld - linker, links object file to an executable file
 * mkdir - create a new directory
 * objdump - print the contents of binary files (object and executable)
@@ -36,6 +37,7 @@ Built-in commands:
 * pwd - print the current working directory
 * scan - scan a document using a scanner and saves it to a file
 * sync - force all filesystems to be synchronized to disks
+* sysctl - configure kernel and ark parameters
 
 If you have a external peripherals (scanner and/or motion detector), place it near the computer, and the computer will automatically discover it when it starts up. If you place the scanner after the computer is already running, you need to restart the computer.
 
